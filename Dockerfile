@@ -4,7 +4,7 @@ FROM n8nio/n8n:latest
 # Define o diretório de trabalho
 WORKDIR /data
 
-# Define variáveis padrão
+# Define variáveis padrão (podem ser sobrescritas no Render)
 ENV N8N_BASIC_AUTH_ACTIVE=true \
     N8N_BASIC_AUTH_USER=admin \
     N8N_BASIC_AUTH_PASSWORD=1million&IA \
@@ -15,5 +15,5 @@ ENV N8N_BASIC_AUTH_ACTIVE=true \
 # Expõe a porta padrão
 EXPOSE 5678
 
-# Executa o n8n
-CMD ["tini", "--", "n8n"]
+# Comando de inicialização (sem tini)
+CMD ["n8n", "start"]
