@@ -16,5 +16,6 @@ ENV N8N_BASIC_AUTH_ACTIVE=true \
 # Expõe a porta padrão
 EXPOSE 5678
 
-# Comando de inicialização (sem tini)
-CMD ["/usr/local/bin/n8n", "start"]
+# Executa o n8n com o Node diretamente (evita bug do CMD no Render)
+ENTRYPOINT ["node", "/usr/local/lib/node_modules/n8n/bin/n8n"]
+CMD ["start"]
